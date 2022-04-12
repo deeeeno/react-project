@@ -10,8 +10,8 @@
     "start": "webpack-dev-server --mode=production"
   },
   "lint-staged": {
-    "*.js": "eslint --fix",
-    "*.jsx": "eslint --fix"
+    "src/*.js": "eslint --fix",
+    "src/*.jsx": "eslint --fix"
   },
   "keywords": [],
   "author": "",

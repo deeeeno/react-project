@@ -1,0 +1,6 @@
+{
+    "editor.formatOnSave":true,     //on save 시 prettier 발동
+    "editor.codeActionsOnSave":{
+        "source.fixAll.eslint":true //on save 시 eslint 발동
+    }
+}

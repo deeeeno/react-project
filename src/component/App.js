@@ -1,20 +1,13 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import A from "./A";
-import B from "./B";
-import Z from './Z';
-import styles from '../css/style.module.css';
-
+import { Suspense } from "react";
+import Counter from "./counter";
+//React18의 Suspense는 server-side-rendering에도 가능하도록 진화하였다.
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Z bg={styles.lotso}/>}/>
-          <Route path="/a" element={<A bg={styles.green}/>} />
-          <Route path="/b" element={<B bg={styles.red}/>} />
-        </Routes>
-      </BrowserRouter>
+      <Suspense fallback={<h1>WAIT</h1>}>
+        <Counter />
+      </Suspense>
     </>
   );
 }

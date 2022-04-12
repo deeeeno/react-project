@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const cssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin')
 const path = require("path");
 module.exports = {
   mode: "development",
@@ -15,6 +16,7 @@ module.exports = {
     watchFiles: "index.html",
     historyApiFallback: true,
   },
+  devtool:"eval-source-map",
   module: {
     rules: [
       {
@@ -29,6 +31,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        exclude: /node_modules/,
         use: ["style-loader", "css-loader"],
       },
     ],
@@ -39,5 +42,11 @@ module.exports = {
       inject: "body",
       title: "react-no-cra",
     }),
+    
   ],
+  optimization:{
+      minimizer:[
+        new cssMinimizerWebpackPlugin()
+      ]
+  }
 };

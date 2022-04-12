@@ -1,8 +1,8 @@
 import React from "react";
-function B() {
+function B({bg}) {
   return (
     <>
-      <h1>B</h1>
+      <h1 className={bg}>B</h1>
     </>
   );
 }

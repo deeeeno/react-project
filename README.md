@@ -97,6 +97,15 @@ npx husky add .husky/pre-commit "npx lint-staged"
 * webpack-dev-server의 라우팅 문제   
 webpack-dev-server config인 devServer에 `historyApiFallback:true`를 추가 해야함. 이유는 가상의 서버를 띄운 것이기에 브라우저 입장에서는 서버가 없는 거임. 그래서 history API를 추가해주기!   
 * style.css module import -> undefined   
-이름 규칙이 있었었음. `{name}.module.css`로 이름을 지어야함..
+이름 규칙이 있었었음. `{name}.module.css`로 이름을 지어야함..   
+* `regeneratorRuntime is not defined` 발생   
+원인 : react애서 `async/await`을 사용하는 경우 나타나는 에러.    
+이유 : 어플리케이션이 컴파일 될 때 `regeneratorRuntime`이 문법을 번역하는데 이게 없어서 그럼   
+해결 방법 : babel의 `@babel/plugin-transform-runtime` 플러그인을 추가한다.
+```
+npm install --save-dev @babel/plugin-transform-runtime
+npm install --save @babel/runtime
 
-
+//.babelrc
+"plugins": ["@babel/plugin-transform-runtime"]
+```

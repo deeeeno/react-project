@@ -1,13 +1,14 @@
 import React from "react";
-import { useState } from "react";
-import { fetchProfileData } from "../fakeApi";
-
-const resource = fetchProfileData();
+import { useEffect, useState } from "react";
 
 function Counter() {
-  console.log("render ~~");
   const [counter, setCounter] = useState(0);
-  const user = resource.user.read();
+  console.log("rendering");
+  useEffect(() => {
+    setTimeout(() => {
+      console.log("done");
+    }, 1000);
+  }, []);
 
   const increase = () => {
     setCounter((prev) => prev + 1);
@@ -23,6 +24,7 @@ function Counter() {
       setCounter((prev) => prev - 2);
     }, 200);
   };
+
   return (
     <>
       <h1>{counter}</h1>
@@ -31,10 +33,10 @@ function Counter() {
     </>
   );
 }
-function fetchData() {
+function get() {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve({ data: 1 });
+      resolve("get");
     }, 1000);
   });
 }
